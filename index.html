@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Crea, mejora y prepara tu hoja de vida para encontrar trabajo con ayuda de inteligencia artificial." />
+    <meta property="og:title" content="CVListo | Crea y mejora tu hoja de vida con IA" />
+    <meta property="og:description" content="Tu próximo trabajo empieza aquí." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0c4a6e" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c4a6e'/%3E%3Cpath d='M19 15h20l8 8v26H19z' fill='white'/%3E%3Cpath d='M27 30h13M27 37h13M27 44h8' stroke='%230c4a6e' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <title>CVListo | Crea y mejora tu hoja de vida con IA</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="CVListo, inicio"><span class="brand-mark">C</span>CV<span>Listo</span></a>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <nav id="main-nav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a><a href="#crear-cv">Crear CV</a><a href="#mejorar-cv">Mejorar CV</a><a href="#entrevista">Entrevista</a>
+        <a class="button button-small" href="#crear-cv">Crear mi CV</a>
+      </nav>
+    </header>
+    <main id="contenido">
+      <section id="inicio" class="hero">
+        <div>
+          <p class="eyebrow">Hecho para avanzar</p>
+          <h1>Crea una hoja de vida que te ayude a conseguir trabajo.</h1>
+          <p class="lead">CVListo utiliza inteligencia artificial para ayudarte a crear, mejorar y adaptar tu hoja de vida de forma sencilla.</p>
+          <div class="hero-actions"><a class="button" href="#crear-cv">Crear mi hoja de vida gratis</a><a class="button button-ghost" href="#mejorar-cv">Mejorar mi CV</a></div>
+          <p class="trust">Gratis · Sin cuenta · Diseñado para Colombia</p>
+        </div>
+        <aside class="hero-preview" aria-label="Vista previa de una hoja de vida">
+          <div class="preview-top"><span></span><div><b>Tu nombre aquí</b><small>Perfil profesional</small></div></div>
+          <div class="preview-line long"></div><div class="preview-line"></div>
+          <h3>Experiencia</h3><div class="preview-line long"></div><div class="preview-line"></div>
+          <h3>Educación</h3><div class="preview-line"></div>
+        </aside>
+      </section>
+      <section class="tools-section" aria-labelledby="herramientas-title">
+        <div class="section-heading"><p class="eyebrow">Herramientas simples</p><h2 id="herramientas-title">Todo lo que necesitas para postularte mejor.</h2></div>
+        <div class="tool-grid">
+          <article class="tool-card"><div class="icon">📝</div><h3>Crear CV</h3><p>Crea una hoja de vida profesional desde cero.</p><a href="#crear-cv">Crear CV <span>→</span></a></article>
+          <article class="tool-card"><div class="icon">🔍</div><h3>Mejorar CV</h3><p>Descubre errores y oportunidades para mejorar tu hoja de vida.</p><a href="#mejorar-cv">Mejorar mi CV <span>→</span></a></article>
+          <article class="tool-card"><div class="icon">🎤</div><h3>Practicar entrevista</h3><p>Prepárate para las preguntas más comunes según el cargo al que aspiras.</p><a href="#entrevista">Practicar entrevista <span>→</span></a></article>
+        </div>
+      </section>
+      <section id="crear-cv" class="app-section" aria-labelledby="crear-title">
+        <div class="section-heading"><p class="eyebrow">1. Crear CV</p><h2 id="crear-title">Cuéntanos sobre ti</h2><p>Completa lo esencial. Podrás editar el resultado después.</p></div>
+        <form id="cv-form" novalidate>
+          <fieldset><legend>Información personal</legend><div class="form-grid"><label>Nombre completo *<input name="name" required placeholder="Ej. Laura Gómez" /></label><label>Ciudad *<input name="city" required placeholder="Ej. Medellín" /></label><label>Teléfono *<input name="phone" required placeholder="Ej. 300 123 4567" /></label><label>Email *<input name="email" type="email" required placeholder="nombre@correo.com" /></label></div></fieldset>
+          <fieldset><legend>Perfil</legend><div class="form-grid"><label>Cargo al que aspiras *<input name="role" required placeholder="Ej. Auxiliar administrativo" /></label><label class="span-all">Objetivo profesional *<textarea name="objective" required placeholder="Cuéntanos qué buscas y qué puedes aportar."></textarea></label></div></fieldset>
+          <fieldset><legend>Educación</legend><div class="form-grid"><label>Nivel educativo<input name="educationLevel" placeholder="Ej. Técnico" /></label><label>Institución<input name="institution" placeholder="Ej. SENA" /></label><label>Programa<input name="program" placeholder="Ej. Gestión administrativa" /></label><label>Año<input name="educationYear" inputmode="numeric" placeholder="2025" /></label></div></fieldset>
+          <fieldset><legend>Experiencia</legend><div id="experience-list"></div><button type="button" id="add-experience" class="text-button">+ Agregar experiencia</button></fieldset>
+          <fieldset><legend>Habilidades e información adicional</legend><div class="form-grid"><label class="span-all">Habilidades (separadas por coma)<input name="skills" placeholder="Ej. Excel, servicio al cliente, organización" /></label><label>Idiomas<input name="languages" placeholder="Ej. Español nativo, inglés básico" /></label><label>Cursos y certificaciones<input name="courses" placeholder="Ej. Excel básico - SENA" /></label></div></fieldset>
+          <div id="cv-form-message" class="form-message" role="alert"></div><button class="button" type="submit">✨ Crear mi hoja de vida</button>
+        </form>
+        <section id="cv-result" class="result hidden" aria-live="polite"><div class="result-actions"><h2>Tu hoja de vida</h2><div><button class="button button-ghost" data-edit-cv>Editar</button><button class="button button-small" data-copy="cv-output">Copiar</button></div></div><article id="cv-output" class="cv-document"></article><p class="future-note">La descarga en PDF estará disponible en una próxima versión.</p></section>
+      </section>
+      <section id="mejorar-cv" class="app-section alternate" aria-labelledby="mejorar-title">
+        <div class="section-heading"><p class="eyebrow">2. Mejorar CV</p><h2 id="mejorar-title">Dale más fuerza a tu perfil</h2><p>Usamos un análisis demostrativo mientras conectamos IA real.</p></div>
+        <form id="improve-form" novalidate><label class="span-all">Pega aquí tu hoja de vida *<textarea id="cv-text" required class="large-textarea" placeholder="Pega el texto de tu hoja de vida aquí..."></textarea></label><div id="improve-message" class="form-message" role="alert"></div><button class="button" type="submit">🔍 Analizar mi CV</button></form>
+        <section id="improve-result" class="result hidden" aria-live="polite"><span class="demo-badge">Modo demo</span><h2>Análisis</h2><div id="analysis-list" class="analysis-list"></div><h2>Versión mejorada</h2><article id="improved-output" class="improved-text"></article><button class="button button-small" data-copy="improved-output">Copiar CV mejorado</button></section>
+      </section>
+      <section id="entrevista" class="app-section" aria-labelledby="interview-title">
+        <div class="section-heading"><p class="eyebrow">3. Entrevista</p><h2 id="interview-title">Llega preparado a la entrevista</h2><p>Practica respuestas con una guía clara y personalizable.</p></div>
+        <form id="interview-form" class="inline-form" novalidate><label>Cargo al que aspiras *<input id="interview-role" required placeholder="Ej. Auxiliar administrativo" /></label><button class="button" type="submit">🎤 Preparar entrevista</button><div id="interview-message" class="form-message" role="alert"></div></form>
+        <section id="interview-result" class="result hidden" aria-live="polite"><span class="demo-badge">Modo demo</span><h2>Preguntas para <span id="role-output"></span></h2><div id="questions-list" class="questions-list"></div></section>
+      </section>
+    </main>
+    <footer><a class="brand" href="#inicio"><span class="brand-mark">C</span>CV<span>Listo</span></a><p>Tu próximo trabajo empieza aquí.</p><small>© <span id="year"></span> CVListo. Hecho para personas que quieren avanzar.</small></footer>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
