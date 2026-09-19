@@ -1,5 +1,21 @@
 /** Demo adapter. Replace these functions with an API client when an LLM provider is configured. */
 export const demoAi = {
+  professionalProfile(role, experienceLevel) {
+    const normalizedRole = role.toLowerCase();
+    const focus = /producci[oó]n|operario|bodega|log[ií]stica/.test(normalizedRole) ? 'el área de producción, el cumplimiento de procedimientos y la calidad' : /administrativ|recepci[oó]n|asistente/.test(normalizedRole) ? 'la organización de información, el servicio y el apoyo administrativo' : /venta|comercial|asesor|cliente/.test(normalizedRole) ? 'la atención al cliente, la comunicación y el logro de objetivos comerciales' : /tecnolog|sistemas|soporte/.test(normalizedRole) ? 'el soporte tecnológico, la solución de problemas y el aprendizaje continuo' : 'el cumplimiento de objetivos, el trabajo en equipo y el aprendizaje continuo';
+    const starting = experienceLevel === 'sin-experiencia';
+    return {
+      text: starting ? `Persona responsable, comprometida y orientada a ${focus}, interesada en desarrollarse como ${role}. Cuenta con disposición para aprender, aportar al equipo y asumir sus responsabilidades con actitud profesional.` : `Profesional con experiencia en crecimiento, orientado(a) a ${focus}. Busca aportar sus capacidades como ${role}, trabajar de forma responsable y contribuir a los resultados del equipo.`,
+      noExperienceNote: `Perfil orientado a ${role}. Sus estudios, cursos y habilidades demuestran disposición para aprender, adaptarse y contribuir desde el inicio.`
+    };
+  },
+  cvTips(data) {
+    const tips = ['Adapta el título y el perfil profesional al cargo específico de cada vacante.', 'Revisa la ortografía y mantén la hoja de vida en una o dos páginas.'];
+    if (!data.email.includes('@') || /apodo|gamer|lol/i.test(data.email)) tips.unshift('Usa un correo profesional que incluya tu nombre.');
+    if (!data.skills.length) tips.unshift('Agrega habilidades relacionadas con el puesto al que quieres aplicar.');
+    if (data.experienceLevel === 'sin-experiencia') tips.unshift('Destaca tus estudios, cursos, proyectos académicos y habilidades transferibles.');
+    return tips.slice(0, 5);
+  },
   async analyzeCv(text) {
     await delay();
     const hasSkills = /habilidad|excel|word|servicio|ventas|ingl[eé]s/i.test(text);
